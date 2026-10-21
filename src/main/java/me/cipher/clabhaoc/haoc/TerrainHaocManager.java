@@ -739,13 +739,11 @@ public final class TerrainHaocManager {
 
     private int acquireQuery() {
         if (this.availableQueries.isEmpty()) {
-            try (MemoryStack stack = MemoryStack.stackPush()) {
-                IntBuffer queries = stack.mallocInt(QUERY_POOL_GROWTH);
-                GL33C.glGenQueries(QUERY_POOL_GROWTH, queries);
+            int[] queries = new int[QUERY_POOL_GROWTH];
+            GL33C.glGenQueries(queries);
 
-                for (int i = QUERY_POOL_GROWTH - 1; i >= 0; i--) {
-                    this.availableQueries.add(queries.get(i));
-                }
+            for (int i = QUERY_POOL_GROWTH - 1; i >= 0; i--) {
+                this.availableQueries.add(queries[i]);
             }
         }
 
