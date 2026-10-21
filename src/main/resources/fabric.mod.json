@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "clab_haoc",
+  "version": "${version}",
+  "name": "CLab Terrain HAOC",
+  "description": "Hardware-accelerated occlusion culling for terrain. Mixins into Sodium's renderer and uses GPU occlusion queries to skip chunk sections which cannot be seen by the camera.",
+  "authors": [
+    "Amritanshu"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.cipher.clabhaoc.ClabHaocMod"
+    ]
+  },
+  "mixins": [
+    "clab_haoc.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.21",
+    "minecraft": "~1.20.1",
+    "sodium": "*"
+  }
+}
